@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EpoxyDemo</string>
+    <string name="like">\u0020Like</string>
+    <string name="likes">\u0020likes</string>
+</resources>

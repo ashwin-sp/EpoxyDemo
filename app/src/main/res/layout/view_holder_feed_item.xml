@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="content" type="com.example.epoxydemo.Content" />
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="onLiked"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{listener::onClick}"
+        >
+        
+        <ImageView
+            android:id="@+id/by_image"
+            app:srcCompat= "@mipmap/ic_launcher_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/by_image"
+            tools:text="Test"
+            android:padding="12dp"
+            android:text="@{content.by}"
+            />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/by_image"
+            android:padding="10dp"
+            tools:text="Good morning!!!!"
+            android:text="@{content.content}"
+            android:onClick="@{listener::onClick}"
+            />
+
+        <TextView
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="10dp"
+            android:text="@{content.likeCount > 0 ? content.likeCount + @string/likes: @string/like}"
+            app:layout_constraintEnd_toStartOf="@+id/comment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content"
+            android:onClick="@{onLiked::onClick}"
+            />
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toBottomOf="@id/content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="10dp"
+            android:text="Comment"
+            android:onClick="@{listener::onClick}"
+            />
+
+        <View
+            app:layout_constraintTop_toBottomOf="@id/like"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:padding="10dp"
+            android:background="@android:color/black"
+            />
+
+        
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

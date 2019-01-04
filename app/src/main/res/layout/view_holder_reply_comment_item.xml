@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable name="content" type="com.example.epoxydemo.Content" />
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="onLiked"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="100dp">
+
+        <ImageView
+            android:id="@+id/by_image"
+            app:srcCompat= "@mipmap/ic_launcher_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/by_image"
+            tools:text="Test"
+            android:padding="12dp"
+            android:text="@{content.by}"
+            />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/by_image"
+            app:layout_constraintTop_toBottomOf="@id/by"
+            android:padding="10dp"
+            android:maxWidth="180dp"
+            tools:text="Good morning!!!! How are you. Fine. How about others? Good morning!!!! How are you. Fine. How about others?"
+            android:text="@{content.content}"
+            />
+
+        <TextView
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="10dp"
+            android:text="@{content.likeCount > 0 ? content.likeCount + @string/likes: @string/like}"
+            app:layout_constraintEnd_toStartOf="@+id/reply"
+            app:layout_constraintStart_toEndOf="@id/by_image"
+            app:layout_constraintTop_toBottomOf="@id/content"
+            android:onClick="@{onLiked::onClick}"
+            />
+
+        <TextView
+            android:id="@+id/reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toBottomOf="@id/content"
+            android:padding="10dp"
+            android:text="Reply"
+            android:onClick="@{listener::onClick}"
+            />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
